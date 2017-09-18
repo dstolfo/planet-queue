@@ -33,3 +33,8 @@ True
 False
 >>>> bounded_q = planet_queue.PlanetQueue(1)
 ```
+
+## Future Improvements
+
+* Multi-threaded unit tests
+* Using lock conditions rather than private methods for improved safety
