@@ -8,6 +8,7 @@ class PlanetQueue(object):
     def __init__(self, maxsize=0):
         # if maxsize <= 0, the queue size is "infinite"
         self.maxsize = maxsize
+        # including support for thread-safety
         self.lock = threading.Lock()
         # The maximum size allowable for an unbounded PlanetQueue would depend
         # on a couple of factors. With an unbounded memory limit, the largest List
@@ -47,17 +48,14 @@ class PlanetQueue(object):
 
     def empty(self):
         with self.lock:
-            return len(self.queue) == 0
+            return self._empty()
 
     def _empty(self):
         return len(self.queue) == 0
 
     def full(self):
         with self.lock:
-            if self.maxsize > 0:
-                return self._size() == self.maxsize
-            else:
-                return False
+            return self._full()
 
     def _full(self):
         if self.maxsize > 0:
