@@ -7,7 +7,7 @@ setup(
     name="planet-queue",
     author="David Stolfo",
     author_email="david.stolfo@gmail.com",
-    url="",
+    url="https://github.com/dstolfo/planet-queue",
     description=description,
     test_suite='nose.collector',
     tests_require=['nose'],
